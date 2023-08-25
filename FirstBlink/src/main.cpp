@@ -1,27 +1,19 @@
 #include <Arduino.h>
+#include "SimpleLED.h"
 
-int LED1 = LED_BUILTIN;
-int LED2 = LED_BUILTIN_AUX;
-
-
-class MyClass
-{
-
-};
+SimpleLED led1(LED_BUILTIN, false, 100, 400);
+SimpleLED led2(LED_BUILTIN_AUX, false, 100, 300);
 
 void setup()
 {
-  // put your setup code here, to run once:
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
+  long start = millis();
+  led1.setup(start);
+  led2.setup(start);
 }
 
 void loop()
 {
-  digitalWrite(LED1, HIGH);
-  digitalWrite(LED2, LOW);
-  delay(1000);
-  digitalWrite(LED1, LOW);
-  digitalWrite(LED2, HIGH);
-  delay(500);
+  long now = millis();
+  led1.update(now);
+  led2.update(now);
 }
