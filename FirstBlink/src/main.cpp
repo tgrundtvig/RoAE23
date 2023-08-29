@@ -1,19 +1,14 @@
 #include <Arduino.h>
-#include "SimpleLED.h"
+#include "SimpleTrafficLight.h"
 
-SimpleLED led1(LED_BUILTIN, false, 100, 400);
-SimpleLED led2(LED_BUILTIN_AUX, false, 100, 300);
+SimpleTrafficLight trafficLight(D3, D1, D2, D5, D6, D7, (long[]){1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000});
 
 void setup()
 {
-  long start = millis();
-  led1.setup(start);
-  led2.setup(start);
+    trafficLight.setup(millis());
 }
 
 void loop()
 {
-  long now = millis();
-  led1.update(now);
-  led2.update(now);
+    trafficLight.update(millis());
 }
