@@ -1,80 +1,53 @@
-union()
+rotate([0.0, 90.0, 0.0])
 {
-    difference()
+    intersection()
     {
-        translate([0.0, 5.0, 0.0])
+        difference()
         {
-            linear_extrude(height = 3.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+            rotate_extrude(angle = 360.0, $fn = 128)
             {
-                scale([10.0, 10.0])
-                {
-                    M196();
-                }
+                M240();
             }
-        }
-        union()
-        {
-            linear_extrude(height = 3.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+            translate([0.0, 0.0, 2.0])
             {
-                union()
+                linear_extrude(height = 10.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                 {
-                    M209();
-                    mirror([1.0, 0.0])
+                    scale([10.0, 1.6])
                     {
-                        M209();
-                    }
-                }
-            }
-            translate([0.0, 5.0, 0.0])
-            {
-                linear_extrude(height = 3.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
-                {
-                    union()
-                    {
-                        M209();
-                        mirror([1.0, 0.0])
-                        {
-                            M209();
-                        }
+                        M196();
                     }
                 }
             }
         }
-    }
-    translate([0.0, 0.0, 4.0])
-    {
-        linear_extrude(height = 3.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+        linear_extrude(height = 10.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
         {
-            union()
+            scale([5.0, 10.0])
             {
-                M204();
-                mirror([1.0, 0.0])
-                {
-                    M204();
-                }
+                M196();
             }
         }
     }
 }
 
-module M209()
+module M240()
 {
     polygon
     (
         points =
         [
             [0.0, 0.0], 
-            [4.0, 0.0], 
-            [4.0, 1.0], 
-            [3.0, 2.0], 
-            [3.0, 3.0], 
-            [4.0, 4.0], 
-            [4.0, 5.0], 
-            [0.0, 5.0]
+            [3.9, 0.0], 
+            [3.9, 1.0], 
+            [2.9, 2.0], 
+            [2.9, 8.0], 
+            [3.9, 9.0], 
+            [2.9, 10.0], 
+            [0.0, 10.0], 
+            [0.0, 2.0]
         ],
         paths =
         [
-            [0, 1, 2, 3, 4, 5, 6, 7]
+            [0, 1, 2, 3, 4, 5, 6, 7, 8]
         ]
     );
 }
@@ -93,30 +66,6 @@ module M196()
         paths =
         [
             [0, 1, 2, 3]
-        ]
-    );
-}
-
-module M204()
-{
-    polygon
-    (
-        points =
-        [
-            [0.0, 0.0], 
-            [4.0, 0.0], 
-            [4.0, 1.0], 
-            [3.0, 2.0], 
-            [3.0, 8.0], 
-            [4.0, 9.0], 
-            [3.0, 10.0], 
-            [1.0, 10.0], 
-            [1.0, 2.0], 
-            [0.0, 2.0]
-        ],
-        paths =
-        [
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         ]
     );
 }
